@@ -36,30 +36,14 @@ namespace ProductApp
             c5.AddProduct(new Product("Gitara", 550, 15), manager);
             c5.AddProduct(new Product("Pianino", 50, 25), manager);
 
-
             Load(manager);
-
-
-
-
-
-
-
-
-
 
         }
         private static void Load(AppManager manager)
         {
-
-           
-
-
             string secim = "";
-           
             Console.WriteLine("Dogru secim edin");
-
-            Console.WriteLine("*******************************************Bolluq online marketinə xoş gəlmisiniz*******************************************\n\n\n");
+            Console.WriteLine("*******************************************Bolluq online marketinə xoş gəlmisiniz**************************************\n\n\n");
             Console.WriteLine("=============================================");
             Console.WriteLine("== 1.Məhsulların kateqoriyaları üzərində əməliyyat aparmaq. ==");
             Console.WriteLine("== 2.Məhsullar üzərində əməliyyat aparmaq  ==");
@@ -69,7 +53,6 @@ namespace ProductApp
             Console.WriteLine("Seciminizi daxil edin");
             secim = Console.ReadLine();
 
-           
             switch (secim)
             {
                 case "1":
@@ -79,11 +62,8 @@ namespace ProductApp
                     Console.WriteLine("1.4.Bütün kateqoriyaları göstər:");
                     Console.WriteLine("1.5.İd-sinə görə kateqoriyaları göstər");
                     Console.WriteLine("1.6.Kateqoriyalar üzərində ada görə axtarış et:");
-
-
                     Console.WriteLine("Seciminizi daxil edin");
                     secim = Console.ReadLine();
-
                     break;
                 case "2":
                     Console.WriteLine("2.1.Yeni məhsul əlavə et:");
@@ -94,12 +74,6 @@ namespace ProductApp
                     Console.WriteLine("2.6.Məhsullar üzərində ada görə axtarış et:");
                     Console.WriteLine("2.7.Məhsullar üzərində kateqoriyaya görə axtarış et:");
                     Console.WriteLine("2.8.Məhsullar üzərində qiymət aralığına görə axtarış et:");
-
-
-
-
-
-
                     Console.WriteLine("Seciminizi daxil edin");
                     secim = Console.ReadLine();
                     break;
@@ -110,13 +84,10 @@ namespace ProductApp
                     {
                         Console.Clear();
                         Console.Beep();
-                       
                         Load(null);
-
                         break;
                     }
             }
-
             switch (secim)
             {
                 case "1.1":
@@ -132,9 +103,7 @@ namespace ProductApp
                     }
                 case "1.2":
                     {
-
-
-                    labelReadCategory:
+                        labelReadCategory:
                         Console.Write("\n Deyismek istediyiniz kateqoriyanin kodunu seçin:");
                         Extension.ReadAllCategories(manager);
 
@@ -151,11 +120,8 @@ namespace ProductApp
 
                         selected.Name = Extension.ReadString("Yeni ad ");
                         Console.WriteLine("Deyisiklik edildi");
-                       
                         Load(manager);
-                       
-                        break;
-                        
+                        break;  
                     }
                 case "1.3":
                     {
@@ -183,14 +149,10 @@ namespace ProductApp
                         manager.Categories.ForEach(cat =>
                         {
                             if (cat.Id == id)
-                            
-                                Extension.GetCategory(cat);
-                           
-                                
+                                Extension.GetCategory(cat);       
                         });
-                       
-                        Load(manager);
 
+                        Load(manager);
                     }
                     break;
                 case ("1.6"):
@@ -202,19 +164,19 @@ namespace ProductApp
 
                     }
                     break;
-
                 default:
-                    break;
+                    {
+                        Console.Clear();
+                        Console.Beep();
+                        Load(null);
+                        break;
+                    }
             }
-
-
             switch (secim)
             {
-
                 case "2.1":
-                    {
-                       
-                    labelReadCategory:
+                    {   
+                         labelReadCategory:
                         Console.WriteLine("\n Kateqoriya kodunu seçin:");
 
                         Extension.ReadAllCategories(manager);
@@ -233,18 +195,13 @@ namespace ProductApp
                             string ProductName = Extension.ReadString("Produktun adı: ");
                             int Count = Extension.ReadInteger("Produktun sayı: ");
                             decimal price = Extension.ReadDecimal("Produktun qiyməti: ");
-
                             selected.AddProduct(new Product(ProductName, price, Count), manager);
                             Console.WriteLine("Yeni produkt bilgileri stoka elave edildi");
-                        
-
                         Load(manager);
-                       
                         break;
                     }
                 case "2.2":
-                    {
-
+                    { 
                         Console.WriteLine("2.2.1. Mehsulda umumi deyisiklik aparmaq:");
                         Console.WriteLine("2.2.2. Mehsulun adini deyismek");
                         Console.WriteLine("2.2.3. Mehsulun qiymetini deyismek");
@@ -313,12 +270,8 @@ namespace ProductApp
                         {
                             if (prod.Category.Id == Id)
                                 Extension.GetProduct(prod);
-                        });
-                       
-
+                        });                     
                         Load(manager);
-
-
                     }
                     break;
                 case ("2.8"):
@@ -342,12 +295,9 @@ namespace ProductApp
                     {
                         Console.Clear();
                         Console.Beep();
-
                         Load(null);
-
                         break;
                     }
-
             }
 
             switch (secim)
