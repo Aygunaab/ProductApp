@@ -42,68 +42,74 @@ namespace ProductApp
         private static void Load(AppManager manager)
         {
             string secim = "";
-            Console.WriteLine("Dogru secim edin");
-            Console.WriteLine("*******************************************Bolluq online marketinə xoş gəlmisiniz**************************************\n\n\n");
-            Console.WriteLine("=============================================");
-            Console.WriteLine("== 1.Məhsulların kateqoriyaları üzərində əməliyyat aparmaq. ==");
-            Console.WriteLine("== 2.Məhsullar üzərində əməliyyat aparmaq  ==");
-            Console.WriteLine("== 3.Sistemden cixmaq.                     ==");
-            Console.WriteLine("=============================================");
+           
+            Console.WriteLine("*******************************************Bolluq online marketinə xoş gəlmisiniz**************************************\n\n\n");          
+            Console.WriteLine("==================================================================");
+            Console.WriteLine("==== 1 Məhsulların kateqoriyaları üzərində əməliyyat aparmaq. ====");
+            Console.WriteLine("==== 2 Məhsullar üzərində əməliyyat aparmaq.                  ====");
+            Console.WriteLine("==== 3 Sistemden cixmaq.                                      ====");
+            Console.WriteLine("==================================================================\n");
 
-            Console.WriteLine("Seciminizi daxil edin");
-            secim = Console.ReadLine();
+            secim=Extension.ReadString("Seciminizi daxil edin  ");
+            Console.WriteLine();
 
             switch (secim)
             {
                 case "1":
-                    Console.WriteLine("1.1.Yeni Kateqoriya əlavə et:");
-                    Console.WriteLine("1.2.Kateqoriya üzərində düzəliş et");
-                    Console.WriteLine("1.3.Kateqoriyanı sil:");
-                    Console.WriteLine("1.4.Bütün kateqoriyaları göstər:");
-                    Console.WriteLine("1.5.İd-sinə görə kateqoriyaları göstər");
-                    Console.WriteLine("1.6.Kateqoriyalar üzərində ada görə axtarış et:");
-                    Console.WriteLine("Seciminizi daxil edin");
-                    secim = Console.ReadLine();
+                    Console.WriteLine("1 Yeni Kateqoriya əlavə et:");
+                    Console.WriteLine("2 Kateqoriya üzərində düzəliş et");
+                    Console.WriteLine("3 Kateqoriyanı sil:");
+                    Console.WriteLine("4 Bütün kateqoriyaları göstər:");
+                    Console.WriteLine("5 İd-sinə görə kateqoriyaları göstər");
+                    Console.WriteLine("6 Kateqoriyalar üzərində ada görə axtarış et\n");
+                    secim = Extension.ReadString("Seciminizi daxil edin  ");
+                    Console.WriteLine();
+                    Console.Clear();
                     break;
                 case "2":
-                    Console.WriteLine("2.1.Yeni məhsul əlavə et:");
-                    Console.WriteLine("2.2.Məhsullar üzərində düzəliş et");
-                    Console.WriteLine("2.3.Məhsulu sil:");
-                    Console.WriteLine("2.4.Bütün məhsulları göstər:");
-                    Console.WriteLine("2.5.İd-sinə görə məhsulları göstər");
-                    Console.WriteLine("2.6.Məhsullar üzərində ada görə axtarış et:");
-                    Console.WriteLine("2.7.Məhsullar üzərində kateqoriyaya görə axtarış et:");
-                    Console.WriteLine("2.8.Məhsullar üzərində qiymət aralığına görə axtarış et:");
-                    Console.WriteLine("Seciminizi daxil edin");
-                    secim = Console.ReadLine();
+                    Console.WriteLine(".1 Yeni məhsul əlavə et:");
+                    Console.WriteLine(".2 Məhsullar üzərində düzəliş et");
+                    Console.WriteLine(".3 Məhsulu sil:");
+                    Console.WriteLine(".4 Bütün məhsulları göstər:");
+                    Console.WriteLine(".5 İd-sinə görə məhsulları göstər");
+                    Console.WriteLine(".6 Məhsullar üzərində ada görə axtarış et:");
+                    Console.WriteLine(".7 Məhsullar üzərində kateqoriyaya görə axtarış et:");
+                    Console.WriteLine(".8 Məhsullar üzərində qiymət aralığına görə axtarış et:\n");
+                    secim = Extension.ReadString("Seciminizi numunedeki kimi daxil edin (Numune: .1 )");
+                    Console.WriteLine();
+                    Console.Clear();
                     break;
                 case "3":
                     Environment.Exit(0);
                     break;
                 default:
                     {
-                        Console.Clear();
+                        Console.WriteLine("Dogru secim edin");
+                        
                         Console.Beep();
                         Load(null);
+                        Console.Clear();
                         break;
                     }
             }
             switch (secim)
             {
-                case "1.1":
+                case "1":
                     {
                         string name;
-                        name = Extension.ReadString("Cateqoriyanın adı: ");
-                        Extension.AddCategory(name,manager);
-                        Console.WriteLine("Yeni  kateqoriya stoka elave edildi");
-                        Console.Clear();
+                        name = Extension.ReadString("Cateqoriyanın adı: \n");
+                        Extension.AddCategory(name, manager);
+                        Console.WriteLine("Yeni  kateqoriya stoka elave edildi\n");
+
                         Load(manager);
-                       
                         break;
+                       
+                        
+                        
                     }
-                case "1.2":
+                case "2":
                     {
-                        labelReadCategory:
+                    labelReadCategory:
                         Console.Write("\n Deyismek istediyiniz kateqoriyanin kodunu seçin:");
                         Extension.ReadAllCategories(manager);
 
@@ -121,9 +127,9 @@ namespace ProductApp
                         selected.Name = Extension.ReadString("Yeni ad ");
                         Console.WriteLine("Deyisiklik edildi");
                         Load(manager);
-                        break;  
+                        break;
                     }
-                case "1.3":
+                case "3":
                     {
                         int Id;
                         Extension.ReadAllCategories(manager);
@@ -133,29 +139,29 @@ namespace ProductApp
                         Load(manager);
                         break;
                     }
-                case "1.4":
+                case "4":
                     {
                         Console.WriteLine("Stokda olan bütün kateqoriyalar: \n\n");
                         Extension.ReadAllCategories(manager);
                         Load(manager);
-                       
+
                         break;
 
                     }
-                case ("1.5"):
+                case ("5"):
                     {
                         int id;
                         id = Extension.ReadInteger("Tapmaq istediyiniz kateqoriyanin Id-ni daxil edin");
                         manager.Categories.ForEach(cat =>
                         {
                             if (cat.Id == id)
-                                Extension.GetCategory(cat);       
+                                Extension.GetCategory(cat);
                         });
 
                         Load(manager);
                     }
                     break;
-                case ("1.6"):
+                case ("6"):
                     {
                         string name;
                         name = Extension.ReadString("Tapmaq istediyiniz kateqoriyanin adini daxil edin ");
@@ -164,55 +170,45 @@ namespace ProductApp
 
                     }
                     break;
-                default:
+
+                case ".1":
                     {
-                        Console.Clear();
-                        Console.Beep();
-                        Load(null);
-                        break;
-                    }
-            }
-            switch (secim)
-            {
-                case "2.1":
-                    {   
-                         labelReadCategory:
+                    labelReadCategory:
                         Console.WriteLine("\n Kateqoriya kodunu seçin:");
 
                         Extension.ReadAllCategories(manager);
 
                         if (!int.TryParse(Console.ReadLine(), out int catId))
-                                goto labelReadCategory;
+                            goto labelReadCategory;
 
                         var selected = manager.Categories.Find((a) => a.Id == catId);
 
-                            if (selected == null)
-                            {
-                                Console.WriteLine("bele kateqoriya yoxdur.");
-                                goto labelReadCategory;
+                        if (selected == null)
+                        {
+                            Console.WriteLine("bele kateqoriya yoxdur.");
+                            goto labelReadCategory;
                         }
 
-                            string ProductName = Extension.ReadString("Produktun adı: ");
-                            int Count = Extension.ReadInteger("Produktun sayı: ");
-                            decimal price = Extension.ReadDecimal("Produktun qiyməti: ");
-                            selected.AddProduct(new Product(ProductName, price, Count), manager);
-                            Console.WriteLine("Yeni produkt bilgileri stoka elave edildi");
+                        string ProductName = Extension.ReadString("Produktun adı: ");
+                        int Count = Extension.ReadInteger("Produktun sayı: ");
+                        decimal price = Extension.ReadDecimal("Produktun qiyməti: ");
+                        selected.AddProduct(new Product(ProductName, price, Count), manager);
+                        Console.WriteLine("Yeni produkt bilgileri stoka elave edildi");
                         Load(manager);
                         break;
                     }
-                case "2.2":
-                    { 
-                        Console.WriteLine("2.2.1. Mehsulda umumi deyisiklik aparmaq:");
-                        Console.WriteLine("2.2.2. Mehsulun adini deyismek");
-                        Console.WriteLine("2.2.3. Mehsulun qiymetini deyismek");
-                        Console.WriteLine("2.2.4.Mehsulun sayini deyismek");
-                        Console.WriteLine("2.2.5.Mehsulun kateqoriyasini deyismek");
-                        Console.WriteLine("Seciminizi daxil edin");
-                        secim = Console.ReadLine();
+                case ".2":
+                    {
+                        Console.WriteLine("1. Mehsulda umumi deyisiklik aparmaq:");
+                        Console.WriteLine("2. Mehsulun adini deyismek");
+                        Console.WriteLine("3. Mehsulun qiymetini deyismek");
+                        Console.WriteLine("4.Mehsulun sayini deyismek");
+                        Console.WriteLine("5.Mehsulun kateqoriyasini deyismek");
+                        secim = Extension.ReadString("Seciminizi numunedeki kimi daxil edin (Numune: 1. )");
                         break;
                     }
 
-                case "2.3":
+                case ".3":
                     {
                         int Id;
                         Extension.ReadAllProduct(manager);
@@ -222,7 +218,7 @@ namespace ProductApp
                         Load(manager);
                         break;
                     }
-                case "2.4":
+                case ".4":
                     {
                         Console.WriteLine("Stokda olan bütün məhsullar: \n\n");
                         Extension.ReadAllProduct(manager);
@@ -231,7 +227,7 @@ namespace ProductApp
                         break;
 
                     }
-                case ("2.5"):
+                case ".5":
                     {
                         int id;
                         Console.WriteLine("Tapmaq istediyiniz mehsulun Id-ni daxil edin");
@@ -250,7 +246,7 @@ namespace ProductApp
                     }
                     break;
 
-                case ("2.6"):
+                case ".6":
                     {
                         string name;
                         name = Extension.ReadString("Tapmaq istediyiniz mehsulun adini daxil edin ");
@@ -259,7 +255,7 @@ namespace ProductApp
 
                     }
                     break;
-                case ("2.7"):
+                case ".7":
                     {
                         Console.WriteLine("Tapmaq istediyiniz kateqoriyani daxil edin");
                         Extension.ReadAllCategories(manager);
@@ -270,42 +266,34 @@ namespace ProductApp
                         {
                             if (prod.Category.Id == Id)
                                 Extension.GetProduct(prod);
-                        });                     
+                        });
                         Load(manager);
                     }
                     break;
-                case ("2.8"):
+                case ".8":
                     {
                         Console.WriteLine("Hansı aralıqda  qiymetlərdə məhsul axtarırsınız? Qiymətləri daxil edin");
-                        decimal FirstPrice= Extension.ReadDecimal("Birinci qiymət  ");
-                         decimal SecondPrice=Extension.ReadDecimal("İkinci qiymət  ");
+                        decimal FirstPrice = Extension.ReadDecimal("Birinci qiymət  ");
+                        decimal SecondPrice = Extension.ReadDecimal("İkinci qiymət  ");
 
                         manager.Products.ForEach(prod =>
                         {
                             if (prod.Price >= FirstPrice && prod.Price <= SecondPrice)
                                 Extension.GetProduct(prod);
-                              
+
                         });
                         Console.ReadLine();
                         Load(manager);
                     }
-                    break;
-
-                default:
-                    {
-                        Console.Clear();
-                        Console.Beep();
-                        Load(null);
-                        break;
-                    }
+                    break;             
             }
-
             switch (secim)
             {
-                case ("2.2.1"):
+
+                case ("1."):
                     {
                         int Id;
-                        string  name;
+                        string name;
                         decimal price;
                         int count;
                         Categorie category;
@@ -327,24 +315,24 @@ namespace ProductApp
                         }
 
                         name = Extension.ReadString("Yeni Mal adini daxil edin ");
-                       price= Extension.ReadDecimal("Yeni Mal qiymetini daxil edin ");
-                       count= Extension.ReadInteger("Yeni Mal sayini daxil edin ");
-                      
-                        Extension.ChangeProductbyId(Id,new Product( name, price, count),selected,manager);
+                        price = Extension.ReadDecimal("Yeni Mal qiymetini daxil edin ");
+                        count = Extension.ReadInteger("Yeni Mal sayini daxil edin ");
+
+                        Extension.ChangeProductbyId(Id, new Product(name, price, count), selected, manager);
                         Console.WriteLine("Ugurla deyisdirildi");
-                        
+
                         Load(manager);
                     }
                     break;
 
-                case "2.2.2":
+                case "2.":
                     {
 
-                        int Id=Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
+                        int Id = Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
                         if (manager.Products.Exists(p => p.Id == Id))
                         {
-                            string name=Extension.ReadString("Yeni adi daxil edin ");
-                            Extension.ChangeProductName(Id, name,manager);
+                            string name = Extension.ReadString("Yeni adi daxil edin ");
+                            Extension.ChangeProductName(Id, name, manager);
                             Console.WriteLine("Ad deyisildi");
                         }
                         else
@@ -354,13 +342,13 @@ namespace ProductApp
                         Load(manager);
                     }
                     break;
-                case ("2.2.3"):
+                case ("3."):
                     {
-                       int Id= Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
-                       
+                        int Id = Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
+
                         if (manager.Products.Exists(p => p.Id == Id))
                         {
-                            decimal NewPrice=Extension.ReadInteger("Yeni qiymeti daxil edin: ");
+                            decimal NewPrice = Extension.ReadInteger("Yeni qiymeti daxil edin: ");
                             Extension.ChangeProductPrice(Id, NewPrice, manager);
                             Console.WriteLine("Mehsulun qiymeti deyisildi:");
                         }
@@ -371,12 +359,12 @@ namespace ProductApp
                     }
                     Load(manager);
                     break;
-                case ("2.2.4"):
+                case ("4."):
                     {
                         int Id = Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
                         if (manager.Products.Exists(p => p.Id == Id))
                         {
-                            int NewCount=Extension.ReadInteger("Yeni sayi daxil edin:");
+                            int NewCount = Extension.ReadInteger("Yeni sayi daxil edin:");
                             Extension.ChangeProductCount(Id, NewCount, manager);
                             Console.WriteLine("Mehsulun sayi deyisildi:");
                         }
@@ -387,12 +375,12 @@ namespace ProductApp
                         Load(manager);
                     }
                     break;
-                case ("2.2.5"):
+                case ("5."):
                     {
                         int Id = Extension.ReadInteger("Deyiseceyiniz mehsulun Id-ni daxil edin ");
                         if (manager.Products.Exists(p => p.Id == Id))
                         {
-                            labelReadCategory:
+                        labelReadCategory:
                             Console.WriteLine("\n Kateqoriya kodunu seçin:");
 
                             Extension.ReadAllCategories(manager);
@@ -427,8 +415,11 @@ namespace ProductApp
 
                         break;
                     }
+
             }
-            }
+
+
+        }
 
 
 

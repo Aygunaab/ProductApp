@@ -18,7 +18,7 @@ namespace ProductApp.Extention
 
                 if (string.IsNullOrWhiteSpace(value))
                     goto l1;
-
+                
                 return value;
             }
 
